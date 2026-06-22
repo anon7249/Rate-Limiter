@@ -23,11 +23,9 @@ class SlidingWindowCounter:
 
         client_data = self.request_counts[ip_address]
 
-        # First request for this IP
         if client_data["current_window_start"] == 0:
             client_data["current_window_start"] = current_window_start
 
-        # If we moved into a new window
         if current_window_start > client_data["current_window_start"]:
             windows_passed = (
                 current_window_start - client_data["current_window_start"]
